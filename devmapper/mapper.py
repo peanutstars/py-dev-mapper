@@ -18,6 +18,6 @@ class DevMapper:
                     if dev.find(pfname) == 0:
                         return '/dev/'+dev
         except OSError:
-            DevMapperError('Failed to Access {file}'.format(file=path))
+            DevMapperError('Failed to Access: {file}'.format(file=path))
 
         raise DevMapperError('Unknown Dev Path: {path}'.format(path=path))

@@ -24,6 +24,8 @@ setup(
         'Environment :: Console',
         'Intended Audience :: Developers',
         'Intended Audience :: Manufacturing',
+        "Operating System :: POSIX :: Linux",
+        "Topic :: System :: Operating System Kernels :: Linux",
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',

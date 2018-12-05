@@ -10,7 +10,9 @@ test:
 	python -m unittest discover -p "test_*.py"
 
 clean:
-	rm -rf build dev_mapper.egg-info dist/*
+	@rm -rf build dev_mapper.egg-info
+	@find . -name "*.pyc" -exec rm -rf {} \;
+	@find . -name __pycache__ -exec rm -rf {} \;
 
 
 build:
