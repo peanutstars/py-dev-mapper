@@ -6,8 +6,10 @@ class DevMapperError(Exception):
 
 
 class DevMapper:
+    SERIAL_PORT = ['ttyS', 'ttyUSB', 'ttyACM']
+
     @classmethod
-    def serial(cls, path, prefix=['ttyUSB', 'ttyACM']):
+    def serial(cls, path, prefix=SERIAL_PORT):
         if path.find('/dev/') == 0:
             return path
         try:
@@ -17,3 +19,5 @@ class DevMapper:
                         return '/dev/'+dev
         except OSError:
             DevMapperError('Failed to Access {file}'.format(file=path))
+
+        raise DevMapperError('Unknown Dev Path: {path}'.format(path=path))
