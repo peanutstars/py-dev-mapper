@@ -14,11 +14,11 @@ setup(
     long_description_content_type="text/markdown",
     author='HyunSuk Lee',
     author_email='peanutstars.job@gmail.com',
-    scripts=[
-    ],
+    url='https://github.com/peanutstars/py-dev-mapper',
+    scripts=[],
     keywords='dev path convert',
     packages=['devmapper'],
-    data_files = [('.', ['VERSION', 'Makefile'])],
+    data_files = [('.', ['VERSION'])],
     include_package_data=True,
     classifiers=[
         'Environment :: Console',

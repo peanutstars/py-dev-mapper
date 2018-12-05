@@ -1,5 +1,6 @@
 SHELL   := /bin/bash
 VERSION := $(shell cat VERSION)
+NULL    := /dev/null
 
 
 
@@ -7,22 +8,27 @@ all: test
 
 
 test:
-	python -m unittest discover -p "test_*.py"
+	# python setup.py test -- it does not wokr in python 2.7
+	python -m unittest discover -p "test*.py"
 
 clean:
 	@rm -rf build dev_mapper.egg-info
-	@find . -name "*.pyc" -exec rm -rf {} \;
-	@find . -name __pycache__ -exec rm -rf {} \;
+	@(find . -name "*.pyc" -exec rm -rf {} \; 2>$(NULL) || true)
+	@(find . -name __pycache__ -exec rm -rf {} \; 2>$(NULL) || true)
 
 
-build:
+build: test
 	python setup.py sdist bdist_wheel
 
 
 upload:
 	python -m twine upload \
+	    dist/dev_mapper-$(VERSION).tar.gz \
 	    dist/dev_mapper-$(VERSION)-py2-none-any.whl \
 	    dist/dev_mapper-$(VERSION)-py3-none-any.whl
 
+freeze:
+	pip freeze > requirement.txt
 
-.PHONY: test clean build build.27 build.36 upload.27
+
+.PHONY: test clean build upload freeze
