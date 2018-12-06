@@ -12,16 +12,21 @@ from devmapper.mapper import DevMapperError, DevMapper
 
 ERR = partial(print, file=sys.stderr)
 DEV_MAP = {
-    'serial':   DevMapper.serial,
+    'serial':       DevMapper.serial,
+    'interface':    DevMapper.interface_name,
 }
 
 
-def mapper(mode, path):
+def mapper(mode, argv):
     if DEV_MAP.get(mode, None) is None:
         usage()
         raise DevMapperError('Not Supported mode: {mode}.'.format(mode=mode))
 
-    return DEV_MAP.get(mode)(path)
+    try:
+        return DEV_MAP.get(mode)(*argv)
+    except DevMapperError as e:
+        ERR('Error: {}'.format(e))
+        raise SystemExit(-1)
 
 
 def usage():
@@ -37,5 +42,5 @@ if __name__ == '__main__':
         raise DevMapperError('Not Enough Parameters')
 
     mode = sys.argv[1]
-    dpath = sys.argv[2]
-    print(mapper(mode, dpath), end='')
+    argv = sys.argv[2:]
+    print(mapper(mode, argv), end='')

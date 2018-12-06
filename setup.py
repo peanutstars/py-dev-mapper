@@ -26,8 +26,9 @@ setup(
         'Intended Audience :: Manufacturing',
         "Operating System :: POSIX :: Linux",
         "Topic :: System :: Operating System Kernels :: Linux",
+        'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
     ],
     install_requires=[
