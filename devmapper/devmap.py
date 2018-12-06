@@ -30,9 +30,11 @@ def mapper(mode, argv):
 
 
 def usage():
-    '''  Usage: devmap.py <mode> <sys-device-pci-address>
+    '''  Usage: python -m devmapper.devmap <mode> <sys-device-pci-address>
     mode:
-        serial      - convert sys-device-pci-address to /dev/ttyXXX.
+        serial      - Convert sys-device-pci-address to /dev/ttyXXX.
+        interface   - Convert a value to /dev/ttyXXX, if the value is matched
+                      a content in sys-device-pci-address/interface file.
 '''
     ERR(usage.__doc__)
 

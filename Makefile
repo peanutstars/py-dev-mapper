@@ -23,7 +23,7 @@ build: test
 
 upload:
 	python -m twine upload \
-	    dist/dev_mapper-$(VERSION).tar.gz \
+	    dist/dev-mapper-$(VERSION).tar.gz \
 	    dist/dev_mapper-$(VERSION)-py2-none-any.whl \
 	    dist/dev_mapper-$(VERSION)-py3-none-any.whl
 
